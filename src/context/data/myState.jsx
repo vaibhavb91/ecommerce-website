@@ -3,6 +3,7 @@ import MyContext from "./myContext";
 
 function MyState(props) {
   const [mode, setMode] = useState("light");
+  const [loding, setLoading] = useState(false);
 
   const toogleMode = () => {
     if (mode === "light") {
@@ -14,7 +15,7 @@ function MyState(props) {
     }
   };
   return (
-    <MyContext.Provider value={{ mode, toogleMode }}>
+    <MyContext.Provider value={{ mode, toogleMode, loding, setLoading }}>
       {props.children}
     </MyContext.Provider>
   );
