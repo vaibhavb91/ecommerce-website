@@ -12,6 +12,13 @@ export default function Navbar() {
   const context = useContext(myContext);
   const { mode, toogleMode } = context;
 
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const logout = () => {
+    localStorage.clear("user");
+    window.location.href = "/login";
+  };
+
   return (
     <div className="bg-white sticky top-0 z-50  ">
       {/* Mobile menu */}
@@ -75,22 +82,31 @@ export default function Navbar() {
                   </div>
 
                   <div className="flow-root">
-                    <Link
-                      to={"/dashboard"}
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      admin
-                    </Link>
+                    {user?.user?.email === "vaibhavbaghdane1234@gmail.com" ? (
+                      <Link
+                        to={"/dashboard"}
+                        className="-m-2 block p-2 font-medium text-gray-900"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        admin
+                      </Link>
+                    ) : (
+                      ""
+                    )}
                   </div>
 
                   <div className="flow-root">
-                    <a
-                      className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      Logout
-                    </a>
+                    {user ? (
+                      <a
+                        onClick={logout}
+                        className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        Logout
+                      </a>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className="flow-root">
                     <Link
@@ -215,6 +231,7 @@ export default function Navbar() {
                   </Link>
 
                   <a
+                    onClick={logout}
                     className="text-sm font-medium text-gray-700 cursor-pointer  "
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
