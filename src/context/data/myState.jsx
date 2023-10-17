@@ -87,6 +87,43 @@ function MyState(props) {
     getProductData();
   }, []);
 
+  // update product function
+
+  const edithandle = (item) => {
+    setProducts(item);
+  };
+
+  const updateProduct = async () => {
+    setLoading(true);
+    try {
+      await setDoc(doc(fireDB, "products", products.id), products);
+      toast.success("Product Updated successfully");
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 800);
+      getProductData();
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  // delete product
+
+  const deleteProduct = async (item) => {
+    setLoading(true);
+    try {
+      await deleteDoc(doc(fireDB, "products", item.id));
+      toast.success("Product Deleted successfully");
+      getProductData();
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   const toogleMode = () => {
     if (mode === "light") {
       setMode("dark");
@@ -107,6 +144,9 @@ function MyState(props) {
         setProducts,
         addProduct,
         product,
+        edithandle,
+        updateProduct,
+        deleteProduct,
       }}
     >
       {props.children}
