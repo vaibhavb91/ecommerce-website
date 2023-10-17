@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import myContext from "../../context/data/myContext";
 import Layout from "../../components/layout/Layout";
 import Modal from "../../components/modal/Modal";
@@ -10,7 +10,7 @@ function Cart() {
   const context = useContext(myContext);
   const { mode } = context;
   const cartItem = useSelector((state) => state.cart);
-
+  console.log(cartItem);
   const dispatch = useDispatch();
 
   const deleteCart = (item) => {
@@ -20,6 +20,93 @@ function Cart() {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItem));
   }, [cartItem]);
+
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  useEffect(() => {
+    let temp = 0;
+    cartItem?.map((cartItem) => {
+      temp = temp + parseInt(cartItem.price);
+    });
+    setTotalAmount(temp);
+  }, [cartItem]);
+
+  const shipping = parseInt(150);
+
+  const grandeTotal = shipping + totalAmount;
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const buyNow = async () => {
+    if (name === "" || address === "" || pincode === "" || phoneNumber === "") {
+      return (
+        toast.error("all field are requed"),
+        {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        }
+      );
+    }
+    const addressInfo = {
+      name,
+      address,
+      pincode,
+      phoneNumber,
+      date: new Date().toLocaleString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+      }),
+    };
+    var options = {
+      key: "",
+      key_secret: "",
+      amount: parseInt(grandeTotal * 100),
+      currency: "INR",
+      order_receipt: "order_rcptid_" + name,
+      name: "E-Bharat",
+      description: "for testing purpose",
+      handler: function (response) {
+        console.log(response);
+        toast.success("Payment Successful");
+        const paymentId = response.razorpay_payment_id;
+        const orderInfo = {
+          cartItem,
+          addressInfo,
+          date: new Date().toLocaleString("en-US", {
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
+          }),
+          email: JSON.parse(localStorage.getItem("user")).user.email,
+          userid: JSON.parse(localStorage.getItem("user")).user.uid,
+          paymentId,
+        };
+        try {
+          const orderRef = collection(fireDB, "order");
+          addDoc(orderRef, orderInfo);
+        } catch (error) {
+          console.log(error);
+        }
+      },
+
+      theme: {
+        color: "#3399cc",
+      },
+    };
+
+    var pay = new window.Razorpay(options);
+    pay.open();
+    console.log(pay);
+  };
 
   return (
     <Layout>
@@ -111,7 +198,7 @@ function Cart() {
                 className="text-gray-700"
                 style={{ color: mode === "dark" ? "white" : "" }}
               >
-                ₹100
+                ₹{totalAmount}
               </p>
             </div>
             <div className="flex justify-between">
@@ -125,7 +212,7 @@ function Cart() {
                 className="text-gray-700"
                 style={{ color: mode === "dark" ? "white" : "" }}
               >
-                ₹20
+                {shipping}
               </p>
             </div>
             <hr className="my-4" />
@@ -141,11 +228,21 @@ function Cart() {
                   className="mb-1 text-lg font-bold"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
-                  ₹200
+                  {grandeTotal}
                 </p>
               </div>
             </div>
-            <Modal />
+            <Modal
+              name={name}
+              address={address}
+              pincode={pincode}
+              phoneNumber={phoneNumber}
+              setName={setName}
+              setAddress={setAddress}
+              setPincode={setPincode}
+              setPhoneNumber={setPhoneNumber}
+              buyNow={buyNow}
+            />
           </div>
         </div>
       </div>
