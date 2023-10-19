@@ -16,7 +16,6 @@ function ProductCard() {
     filterPrice,
     setFilterPrice,
   } = context;
-  console.log(searchKey);
   const dispatch = useDispatch();
   const cartItem = useSelector((state) => state.cart);
   const addCart = (product) => {
@@ -42,10 +41,19 @@ function ProductCard() {
         <div className="flex flex-wrap -m-4">
           {product
             .filter((obj) => obj?.title?.toLowerCase().includes(searchKey))
+            .filter((obj) => obj.category.toLowerCase().includes(filterType))
+            .filter((obj) => obj.price.toLowerCase().includes(filterPrice))
+            .slice(0, 8)
             .map((item, index) => {
               const { title, price, description, imageUrl } = item;
               return (
-                <div key={index} className="p-4 md:w-1/4  drop-shadow-lg ">
+                <div
+                  key={index}
+                  onClick={() =>
+                    (window.location.href = `/productinfo/${item.id}`)
+                  }
+                  className="p-4 md:w-1/4  drop-shadow-lg "
+                >
                   <div
                     className="h-full border-2 hover:shadow-gray-100 hover:shadow-2xl transition-shadow duration-300 ease-in-out    border-gray-200 border-opacity-60 rounded-2xl overflow-hidden"
                     style={{

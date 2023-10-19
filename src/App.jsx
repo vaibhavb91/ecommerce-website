@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "../src/pages/home/Home";
+import Allproducts from "../src/pages/allproducts/Allproducts";
 import Order from "../src/pages/order/Order";
 import Cart from "../src/pages/cart/Cart";
 import Dashboard from "../src/pages/admin/dashboard/Dashboard";
@@ -15,10 +16,14 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <MyState>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/allproducts" element={<Allproducts />} />
         <Route
           path="/order"
           element={
