@@ -124,6 +124,10 @@ function MyState(props) {
     }
   };
 
+  const [searchKey, setSearchKey] = useState("");
+  const [filterType, setFilterType] = useState("");
+  const [filterPrice, setFilterPrice] = useState("");
+
   const toogleMode = () => {
     if (mode === "light") {
       setMode("dark");
@@ -147,6 +151,12 @@ function MyState(props) {
         edithandle,
         updateProduct,
         deleteProduct,
+        searchKey,
+        setSearchKey,
+        filterType,
+        setFilterType,
+        filterPrice,
+        setFilterPrice,
       }}
     >
       {props.children}
