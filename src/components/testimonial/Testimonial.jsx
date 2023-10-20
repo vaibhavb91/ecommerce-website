@@ -27,7 +27,7 @@ function Testimonial() {
                 <img
                   alt="testimonial"
                   className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                  src="https://ecommerce-sk.vercel.app/img/kamal.png"
+                  src="https://images.unsplash.com/photo-1508341591423-4347099e1f19?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 />
                 <p
                   style={{ color: mode === "dark" ? "white" : "" }}
@@ -43,13 +43,13 @@ function Testimonial() {
                   style={{ color: mode === "dark" ? "#ff4162" : "" }}
                   className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase"
                 >
-                  Kamal Nayan Upadhyay
+                  Vaibhav Baghdane
                 </h2>
                 <p
                   style={{ color: mode === "dark" ? "white" : "" }}
                   className="text-gray-500"
                 >
-                  Senior Product Designer
+                  React JS Developer
                 </p>
               </div>
             </div>
@@ -74,13 +74,13 @@ function Testimonial() {
                   style={{ color: mode === "dark" ? "#ff4162" : "" }}
                   className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase"
                 >
-                  React Js
+                  User
                 </h2>
                 <p
                   style={{ color: mode === "dark" ? "white" : "" }}
                   className="text-gray-500"
                 >
-                  UI Develeoper
+                  Fashion Designer
                 </p>
               </div>
             </div>
@@ -89,7 +89,7 @@ function Testimonial() {
                 <img
                   alt="testimonial"
                   className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                  src="https://webknudocs.vercel.app/logo/react.png"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 />
                 <p
                   style={{ color: mode === "dark" ? "white" : "" }}
@@ -105,7 +105,7 @@ function Testimonial() {
                   style={{ color: mode === "dark" ? "#ff4162" : "" }}
                   className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase"
                 >
-                  React Js
+                  Stiven
                 </h2>
                 <p
                   style={{ color: mode === "dark" ? "white" : "" }}

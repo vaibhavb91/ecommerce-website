@@ -1,11 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../redux/cartSlice";
+import { addToCart, addToWishlist } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard() {
   const context = useContext(myContext);
+  const navigate = useNavigate();
   const {
     mode,
     product,
@@ -18,10 +20,16 @@ function ProductCard() {
   } = context;
   const dispatch = useDispatch();
   const cartItem = useSelector((state) => state.cart);
+
   const addCart = (product) => {
     dispatch(addToCart(product));
     toast.success("Add To Cart");
   };
+  const addWishlist = (product) => {
+    dispatch(addToWishlist(product));
+    toast.success("Add To Wishlist");
+  };
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItem));
   }, [cartItem]);
@@ -49,9 +57,7 @@ function ProductCard() {
               return (
                 <div
                   key={index}
-                  onClick={() =>
-                    (window.location.href = `/productinfo/${item.id}`)
-                  }
+                  onClick={() => navigate(`/productinfo/${item.id}`)}
                   className="p-4 md:w-1/4  drop-shadow-lg "
                 >
                   <div
@@ -95,6 +101,15 @@ function ProductCard() {
                           className="focus:outline-none text-white bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2"
                         >
                           Add To Cart
+                        </button>
+                      </div>
+                      <div className=" flex justify-center mt-5">
+                        <button
+                          onClick={() => addWishlist(item)}
+                          type="button"
+                          className="focus:outline-none text-white bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2"
+                        >
+                          Add To Wishlist
                         </button>
                       </div>
                     </div>

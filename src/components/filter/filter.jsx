@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import myContext from "../../context/data/myContext";
-
 function Filter() {
   const context = useContext(myContext);
   const {
@@ -13,6 +12,10 @@ function Filter() {
     setFilterPrice,
     product,
   } = context;
+  const reset = () => {
+    setSearchKey("");
+    setFilterType("");
+  };
 
   return (
     <div>
@@ -52,6 +55,7 @@ function Filter() {
           <div className="flex items-center justify-between mt-4">
             <p className="font-medium">Filters</p>
             <button
+              onClick={reset}
               className="px-4 py-2 bg-gray-50hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md"
               style={{ color: mode === "dark" ? "white" : "" }}
             >

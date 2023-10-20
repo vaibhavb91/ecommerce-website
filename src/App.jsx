@@ -4,6 +4,7 @@ import Home from "../src/pages/home/Home";
 import Allproducts from "../src/pages/allproducts/Allproducts";
 import Order from "../src/pages/order/Order";
 import Cart from "../src/pages/cart/Cart";
+import Wishlist from "../src/pages/wishlist/Wishlist";
 import Dashboard from "../src/pages/admin/dashboard/Dashboard";
 import Nopage from "./pages/nopage/Nopage";
 import MyState from "./context/data/myState";
@@ -33,6 +34,7 @@ const App = () => {
           }
         />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route
           path="/dashboard"
           element={

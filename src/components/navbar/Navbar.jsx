@@ -1,8 +1,9 @@
 import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
-import { BsFillCloudSunFill } from "react-icons/bs";
-import { FiSun } from "react-icons/fi";
+import { BsSun } from "react-icons/bs";
+import { MdNightsStay } from "react-icons/md";
+
 import myContext from "../../context/data/myContext";
 import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
@@ -129,23 +130,6 @@ export default function Navbar() {
                     </Link>
                   </div>
                 </div>
-
-                <div className="border-t border-gray-200 px-4 py-6">
-                  <a href="#" className="-m-2 flex items-center p-2">
-                    <img
-                      src="img/indiaflag.png"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span
-                      className="ml-3 block text-base font-medium text-gray-900"
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      INDIA
-                    </span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
-                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -258,22 +242,6 @@ export default function Navbar() {
                     ""
                   )}
                 </div>
-
-                <div className="hidden lg:ml-8 lg:flex">
-                  <a href="#" className="flex items-center text-gray-700 ">
-                    <img
-                      src="https://ecommerce-sk.vercel.app/img/indiaflag.png"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span
-                      className="ml-3 block text-sm font-medium"
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      INDIA
-                    </span>
-                  </a>
-                </div>
                 <div className="hidden lg:ml-8 lg:flex">
                   <a href="#" className="flex items-center text-gray-700 ">
                     <img
@@ -289,9 +257,9 @@ export default function Navbar() {
                   <button className="" onClick={toogleMode}>
                     {/* <MdDarkMode size={35} style={{ color: mode === 'dark' ? 'white' : '' }} /> */}
                     {mode === "light" ? (
-                      <FiSun className="" size={30} />
+                      <MdNightsStay className="" size={30} />
                     ) : "dark" ? (
-                      <BsFillCloudSunFill size={30} />
+                      <BsSun size={30} />
                     ) : (
                       ""
                     )}
@@ -318,6 +286,33 @@ export default function Navbar() {
                         strokeLinejoin="round"
                         d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
                       />
+                    </svg>
+
+                    <span
+                      className="ml-2 text-sm font-medium text-gray-700 group-"
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      {cartItem?.length}
+                    </span>
+                    <span className="sr-only">items in cart, view bag</span>
+                  </Link>
+                </div>
+                {/* favourite  */}
+                <div className="ml-4 flow-root lg:ml-6">
+                  <Link
+                    to={"/wishlist"}
+                    className="group -m-2 flex items-center p-2"
+                    style={{ color: mode === "dark" ? "white" : "" }}
+                  >
+                    <svg
+                      fill="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      className="w-5 h-5"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
                     </svg>
 
                     <span

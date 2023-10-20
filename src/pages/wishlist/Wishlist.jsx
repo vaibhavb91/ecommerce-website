@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteFromCart } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
 
-function Cart() {
+function Wishlist() {
   const context = useContext(myContext);
   const { mode } = context;
   const cartItem = useSelector((state) => state.cart);
@@ -249,4 +249,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default Wishlist;
