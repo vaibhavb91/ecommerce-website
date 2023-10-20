@@ -30,6 +30,10 @@ function Cart() {
     setTotalAmount(temp);
   }, [cartItem]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const shipping = parseInt(150);
 
   const grandeTotal = shipping + totalAmount;

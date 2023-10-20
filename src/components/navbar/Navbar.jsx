@@ -298,7 +298,7 @@ export default function Navbar() {
                   </Link>
                 </div>
                 {/* favourite  */}
-                <div className="ml-4 flow-root lg:ml-6">
+                {/* <div className="ml-4 flow-root lg:ml-6">
                   <Link
                     to={"/wishlist"}
                     className="group -m-2 flex items-center p-2"
@@ -323,7 +323,7 @@ export default function Navbar() {
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, addToWishlist } from "../../redux/cartSlice";
+import { addToCart } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { addItemToWishlist } from "../../redux/wishlistSlice";
 
 function ProductCard() {
   const context = useContext(myContext);
@@ -19,6 +20,7 @@ function ProductCard() {
     setFilterPrice,
   } = context;
   const dispatch = useDispatch();
+
   const cartItem = useSelector((state) => state.cart);
 
   const addCart = (product) => {
@@ -26,8 +28,8 @@ function ProductCard() {
     toast.success("Add To Cart");
   };
   const addWishlist = (product) => {
-    dispatch(addToWishlist(product));
-    toast.success("Add To Wishlist");
+    dispatch(addItemToWishlist(product));
+    toast.success("Add To Cart");
   };
 
   useEffect(() => {
@@ -103,7 +105,7 @@ function ProductCard() {
                           Add To Cart
                         </button>
                       </div>
-                      <div className=" flex justify-center mt-5">
+                      {/* <div className=" flex justify-center mt-5">
                         <button
                           onClick={() => addWishlist(item)}
                           type="button"
@@ -111,7 +113,7 @@ function ProductCard() {
                         >
                           Add To Wishlist
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = JSON.parse(localStorage.getItem("cart")) ?? [];
+const cartData = JSON.parse(localStorage.getItem("cart"));
+const initialState = Array.isArray(cartData) ? cartData : [];
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -11,11 +13,8 @@ const cartSlice = createSlice({
     deleteFromCart(state, action) {
       return state.filter((item) => item.id != action.payload.id);
     },
-    addToWishlist(state, action) {
-      state.push(action.payload);
-    },
   },
 });
 
-export const { addToCart, deleteFromCart, addToWishlist } = cartSlice.actions;
+export const { addToCart, deleteFromCart } = cartSlice.actions;
 export default cartSlice.reducer;
