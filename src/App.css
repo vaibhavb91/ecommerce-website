@@ -1,0 +1,5 @@
+.active-link {
+  color: rgb(219 39 119 / var(--tw-bg-opacity));
+  border-bottom: 2px solid;
+  font-weight: bold;
+}

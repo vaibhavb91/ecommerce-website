@@ -1,15 +1,16 @@
 import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BsSun } from "react-icons/bs";
 import { MdNightsStay } from "react-icons/md";
-
+import "../../App.css";
 import myContext from "../../context/data/myContext";
 import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   const context = useContext(myContext);
 
@@ -71,7 +72,9 @@ export default function Navbar() {
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <Link
                     to={"/allproducts"}
-                    className="text-sm font-medium text-gray-900 "
+                    className={`text-sm font-medium text-gray-700 ${
+                      location.pathname === "/allproducts" ? "active-link" : ""
+                    }`}
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     All Products
@@ -81,7 +84,9 @@ export default function Navbar() {
                       <Link
                         to={"/order"}
                         style={{ color: mode === "dark" ? "white" : "" }}
-                        className="-m-2 block p-2 font-medium text-gray-900"
+                        className={`text-sm font-medium text-gray-700 ${
+                          location.pathname === "/order" ? "active-link" : ""
+                        }`}
                       >
                         Order
                       </Link>
@@ -94,7 +99,11 @@ export default function Navbar() {
                     {user?.user?.email === "vaibhavbaghdane1234@gmail.com" ? (
                       <Link
                         to={"/dashboard"}
-                        className="-m-2 block p-2 font-medium text-gray-900"
+                        className={`text-sm font-medium text-gray-700 ${
+                          location.pathname === "/dashboard"
+                            ? "active-link"
+                            : ""
+                        }`}
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         admin
@@ -108,7 +117,9 @@ export default function Navbar() {
                     {user ? (
                       <a
                         onClick={logout}
-                        className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
+                        className={`text-sm font-medium text-gray-700 ${
+                          location.pathname === "/logout" ? "active-link" : ""
+                        }`}
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         Logout
@@ -202,7 +213,9 @@ export default function Navbar() {
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <Link
                     to={"/allproducts"}
-                    className="text-sm font-medium text-gray-700 "
+                    className={`text-sm font-medium text-gray-700 ${
+                      location.pathname === "/allproducts" ? "active-link" : ""
+                    }`}
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     All Products
@@ -210,7 +223,9 @@ export default function Navbar() {
                   {user ? (
                     <Link
                       to={"/order"}
-                      className="text-sm font-medium text-gray-700 "
+                      className={`text-sm font-medium text-gray-700 ${
+                        location.pathname === "/order" ? "active-link" : ""
+                      }`}
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Order
@@ -221,7 +236,9 @@ export default function Navbar() {
                   {user?.user?.email === "vaibhavbaghdane1234@gmail.com" ? (
                     <Link
                       to={"/dashboard"}
-                      className="text-sm font-medium text-gray-700 "
+                      className={`text-sm font-medium text-gray-700 cursor-auto ${
+                        location.pathname === "/dashboard" ? "active-link" : ""
+                      }`}
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Admin
@@ -233,7 +250,9 @@ export default function Navbar() {
                   {user ? (
                     <a
                       onClick={logout}
-                      className="text-sm font-medium text-gray-700 cursor-pointer  "
+                      className={`text-sm font-medium text-gray-700 ${
+                        location.pathname === "/logout" ? "active-link" : ""
+                      }`}
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Logout
