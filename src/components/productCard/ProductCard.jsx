@@ -50,16 +50,16 @@ function ProductCard() {
 
         <div className="flex flex-wrap -m-4">
           {product
-            .filter((obj) => obj?.title?.toLowerCase().includes(searchKey))
-            .filter((obj) => obj.category.toLowerCase().includes(filterType))
-            .filter((obj) => obj.price.toLowerCase().includes(filterPrice))
+            ?.filter((obj) => obj?.title?.toLowerCase().includes(searchKey))
+            ?.filter((obj) => obj?.category.toLowerCase().includes(filterType))
+            ?.filter((obj) => obj?.price.toLowerCase().includes(filterPrice))
             .slice(0, 12)
             .map((item, index) => {
               const { title, price, description, imageUrl } = item;
               return (
                 <div
                   key={index}
-                  onClick={() => navigate(`/productinfo/${item.id}`)}
+                  onClick={() => navigate(`/productinfo/${item?.id}`)}
                   className="p-4 md:w-1/4  drop-shadow-lg "
                 >
                   <div

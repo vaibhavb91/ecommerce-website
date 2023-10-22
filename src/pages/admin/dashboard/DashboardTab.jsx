@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function DashboardTab() {
   const context = useContext(myContext);
   const { mode, product, edithandle, deleteProduct, order, user } = context;
-  console.log(order, "order");
+  console.log(user, "user");
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -118,7 +118,7 @@ function DashboardTab() {
                         </th>
                       </tr>
                     </thead>
-                    {product.map((item, index) => {
+                    {product?.map((item, index) => {
                       const {
                         title,
                         price,
@@ -236,7 +236,7 @@ function DashboardTab() {
                   Order Details
                 </h1>
 
-                {order.map((allorder, index) => {
+                {order?.map((allorder, index) => {
                   return (
                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                       <thead
@@ -283,7 +283,14 @@ function DashboardTab() {
                           </th>
                         </tr>
                       </thead>
-                      {order.map((item, index) => {
+                      {allorder?.cartItem?.map((item, index) => {
+                        const {
+                          title,
+                          description,
+                          category,
+                          imageUrl,
+                          price,
+                        } = item;
                         return (
                           <tbody>
                             <tr
@@ -300,7 +307,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                {allorder.paymentId}
+                                {allorder?.paymentId}
                               </td>
                               <th
                                 scope="row"
@@ -308,7 +315,7 @@ function DashboardTab() {
                               >
                                 <img
                                   className="w-16"
-                                  src={item.cartItem.imageUrl}
+                                  src={imageUrl}
                                   alt="img"
                                 />
                               </th>
@@ -318,7 +325,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                {item.title}
+                                {title}
                               </td>
                               <td
                                 className="px-6 py-4 text-black "
@@ -326,7 +333,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                ₹{item.price}
+                                ₹{price}
                               </td>
                               <td
                                 className="px-6 py-4 text-black "
@@ -334,7 +341,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                {item.cartItem.category}
+                                {category}
                               </td>
 
                               <td
@@ -343,7 +350,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                {item.addressInfo.name}
+                                {allorder?.addressInfo?.name}
                               </td>
                               <td
                                 className="px-6 py-4 text-black "
@@ -351,7 +358,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                {item.addressInfo.address}
+                                {allorder?.addressInfo?.address}
                               </td>
                               <td
                                 className="px-6 py-4 text-black "
@@ -359,7 +366,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                {item.addressInfo.pincode}
+                                {allorder?.addressInfo?.pincode}
                               </td>
                               <td
                                 className="px-6 py-4 text-black "
@@ -367,7 +374,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                {item.addressInfo.phoneNumber}
+                                {allorder.addressInfo.phoneNumber}
                               </td>
                               <td
                                 className="px-6 py-4 text-black "
@@ -375,7 +382,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                {item.email}
+                                {allorder?.email}
                               </td>
                               <td
                                 className="px-6 py-4 text-black "
@@ -383,7 +390,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                {item.date}
+                                {allorder?.date}
                               </td>
                             </tr>
                           </tbody>
@@ -420,19 +427,10 @@ function DashboardTab() {
                         Name
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Address
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Pincode
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Phone Number
-                      </th>
-                      <th scope="col" className="px-6 py-3">
                         Email
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Date
+                        Uid
                       </th>
                     </tr>
                   </thead>

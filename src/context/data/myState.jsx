@@ -204,6 +204,7 @@ function MyState(props) {
         filterPrice,
         setFilterPrice,
         order,
+        user,
       }}
     >
       {props.children}
