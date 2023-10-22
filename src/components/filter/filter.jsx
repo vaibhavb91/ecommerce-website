@@ -15,13 +15,14 @@ function Filter() {
   const reset = () => {
     setSearchKey("");
     setFilterType("");
+    setFilterPrice("");
   };
 
   return (
     <div>
       <div className=" container mx-auto px-4 mt-5 ">
         <div
-          className="p-5 rounded-lg bg-gray-100 drop-shadow-xl border border-gray-200"
+          className="p-5 rounded-lg bg-gray-200 drop-shadow-xl border border-gray-200"
           style={{
             backgroundColor: mode === "dark" ? "#282c34" : "",
             color: mode === "dark" ? "white" : "",
@@ -73,24 +74,31 @@ function Filter() {
                   color: mode === "dark" ? "white" : "",
                 }}
               >
-                {product?.map((item, index) => {
-                  return (
-                    <option value={item?.category}>{item?.category}</option>
-                  );
-                })}
+                {Array.from(
+                  new Set(product?.map((item) => item?.category))
+                ).map((category, index) => (
+                  <option key={index} value={category}>
+                    {category}
+                  </option>
+                ))}
               </select>
+
               <select
                 value={filterPrice}
                 onChange={(e) => setFilterPrice(e.target.value)}
-                className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
                 style={{
                   backgroundColor: mode === "dark" ? "rgb(64 66 70)" : "",
                   color: mode === "dark" ? "white" : "",
                 }}
               >
-                {product?.map((item, index) => {
-                  return <option value={item?.price}>{item?.price}</option>;
-                })}
+                {Array.from(new Set(product?.map((item) => item?.price))).map(
+                  (price, index) => (
+                    <option key={index} value={price}>
+                      {price}
+                    </option>
+                  )
+                )}
               </select>
             </div>
           </div>

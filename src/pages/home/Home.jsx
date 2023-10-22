@@ -15,7 +15,9 @@ const Home = () => {
       <ProductCard />
       <div className="flex justify-center m-10 mb-4">
         <Link to="allproducts">
-          <button className="bg-gray-300 px-5 py-2 rounded-xl">See More</button>
+          <button className="bg-gray-300 px-5 py-2 rounded-xl">
+            View More
+          </button>
         </Link>
       </div>
       <Testimonial />

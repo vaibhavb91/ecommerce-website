@@ -13,12 +13,12 @@ const HeroSection = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
     autoplay: true,
   };
 
   return (
-    <div className="mt-3">
+    <div className="mt-3 ml-5 mr-5">
       <Slider {...sliderSettings}>
         <div>
           <img src={slider1} alt="Image 1" />

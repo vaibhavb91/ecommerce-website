@@ -53,7 +53,7 @@ function ProductCard() {
             .filter((obj) => obj?.title?.toLowerCase().includes(searchKey))
             .filter((obj) => obj.category.toLowerCase().includes(filterType))
             .filter((obj) => obj.price.toLowerCase().includes(filterPrice))
-            .slice(0, 8)
+            .slice(0, 12)
             .map((item, index) => {
               const { title, price, description, imageUrl } = item;
               return (

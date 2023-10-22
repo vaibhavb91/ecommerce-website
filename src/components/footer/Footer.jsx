@@ -25,20 +25,22 @@ export default function Footer() {
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a
+                <Link
+                  to="/"
                   className="text-gray-600 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
+                  to="/order"
                   className="text-gray-600 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Order
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -49,12 +51,13 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
+                <Link
+                  to="/cart"
                   className="text-gray-600 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Cart
-                </a>
+                </Link>
               </li>
             </nav>
           </div>
