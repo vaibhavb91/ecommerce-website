@@ -5,6 +5,8 @@ import Modal from "../../components/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFromCart } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
+import { addDoc, collection } from "firebase/firestore";
+import { fireDB } from "../../firebase/firebaseConfig";
 
 function Cart() {
   const context = useContext(myContext);
@@ -70,15 +72,14 @@ function Cart() {
       }),
     };
     var options = {
-      key: "",
-      key_secret: "",
+      key: "rzp_test_QNNqWgHwi03IdX",
+      key_secret: "b50hdMD4rGxgkOTjstiD6vwv",
       amount: parseInt(grandeTotal * 100),
       currency: "INR",
       order_receipt: "order_rcptid_" + name,
       name: "E-Bharat",
       description: "for testing purpose",
       handler: function (response) {
-        console.log(response);
         toast.success("Payment Successful");
         const paymentId = response.razorpay_payment_id;
         const orderInfo = {

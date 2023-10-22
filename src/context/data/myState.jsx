@@ -124,6 +124,52 @@ function MyState(props) {
     }
   };
 
+  const [order, setOrder] = useState([]);
+
+  const getOrderData = async () => {
+    setLoading(true);
+    try {
+      const result = await getDocs(collection(fireDB, "order"));
+      const ordersArray = [];
+      console.log(ordersArray);
+      result.forEach((doc) => {
+        ordersArray.push(doc.data());
+        setLoading(false);
+      });
+      setOrder(ordersArray);
+      console.log(ordersArray);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  const [user, setUser] = useState([]);
+
+  const getUserData = async () => {
+    setLoading(true);
+    try {
+      const result = await getDocs(collection(fireDB, "users"));
+      const usersArray = [];
+      result.forEach((doc) => {
+        usersArray.push(doc.data());
+        setLoading(false);
+      });
+      setUser(usersArray);
+      console.log(usersArray);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getOrderData();
+    getUserData();
+  }, []);
+
   const [searchKey, setSearchKey] = useState("");
   const [filterType, setFilterType] = useState("");
   const [filterPrice, setFilterPrice] = useState("");
@@ -157,6 +203,7 @@ function MyState(props) {
         setFilterType,
         filterPrice,
         setFilterPrice,
+        order,
       }}
     >
       {props.children}
