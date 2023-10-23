@@ -138,7 +138,7 @@ export default function Footer() {
                 className=" text-2xl font-bold text-black  px-2 py-1 rounded"
                 style={{ color: mode === "dark" ? "white" : "" }}
               >
-                E-Commerce
+                E-Cart
               </h1>
             </div>
           </Link>
@@ -146,7 +146,7 @@ export default function Footer() {
             className="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4"
             style={{ color: mode === "dark" ? "white" : "" }}
           >
-            © 2023 E-Commerce —
+            © 2023 E-Cart —
             <a
               href="https://twitter.com/knyttneve"
               rel="noopener noreferrer"
@@ -154,7 +154,7 @@ export default function Footer() {
               target="_blank"
               style={{ color: mode === "dark" ? "white" : "" }}
             >
-              www.Ecommerce.com
+              www.ECart.com
             </a>
           </p>
           <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">

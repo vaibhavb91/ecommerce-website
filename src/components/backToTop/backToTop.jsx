@@ -38,7 +38,10 @@ const BackToTopButton = () => {
       className={`back-to-top ${isButtonVisible ? "visible" : ""}`}
       onClick={scrollToTop}
     >
-      <BsArrowUpCircleFill style={{ color: "#DB2777" }} />
+      <BsArrowUpCircleFill
+        style={{ color: "#DB2777" }}
+        className="hidden md:block"
+      />
     </button>
   );
 };

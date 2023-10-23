@@ -5,6 +5,7 @@ import Layout from "../../components/layout/Layout";
 import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
+import { toast } from "react-toastify";
 
 function Allproducts() {
   const context = useContext(myContext);
@@ -84,7 +85,7 @@ function Allproducts() {
                           className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
                           style={{ color: mode === "dark" ? "white" : "" }}
                         >
-                          E-Commerce
+                          E-Cart
                         </h2>
                         <h1
                           className="title-font text-lg font-medium text-gray-900 mb-3"

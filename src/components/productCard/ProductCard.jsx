@@ -81,7 +81,7 @@ function ProductCard() {
                         className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        E-Commerce
+                        E-Cart
                       </h2>
                       <h1
                         className="title-font text-lg font-medium text-gray-900 mb-3"

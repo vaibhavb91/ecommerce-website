@@ -1,4 +1,5 @@
 import React from "react";
+import "../../App.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -21,16 +22,16 @@ const HeroSection = () => {
     <div className="mt-3 ml-5 mr-5">
       <Slider {...sliderSettings}>
         <div>
-          <img src={slider1} alt="Image 1" />
+          <img src={slider1} className="slider-container" alt="Image 1" />
         </div>
         <div>
-          <img src={slider2} alt="Image 1" />
+          <img src={slider2} className="slider-container" alt="Image 1" />
         </div>
         <div>
-          <img src={slider3} alt="Image 1" />
+          <img src={slider3} className="slider-container" alt="Image 1" />
         </div>
         <div>
-          <img src={slider4} alt="Image 1" />
+          <img src={slider4} className="slider-container" alt="Image 1" />
         </div>
       </Slider>
     </div>
