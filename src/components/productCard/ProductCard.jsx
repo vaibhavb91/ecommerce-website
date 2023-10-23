@@ -24,9 +24,17 @@ function ProductCard() {
   const cartItem = useSelector((state) => state.cart);
 
   const addCart = (product) => {
-    dispatch(addToCart(product));
-    toast.success("Add To Cart");
+    const user = localStorage.getItem("user");
+    if (user) {
+      dispatch(addToCart(product));
+      toast.success("Added To Cart");
+    } else {
+      toast.error("Please log or signup for add to cart");
+      navigate("/login");
+      toast.error("login successfully");
+    }
   };
+
   const addWishlist = (product) => {
     dispatch(addItemToWishlist(product));
     toast.success("Add To Cart");
@@ -35,6 +43,7 @@ function ProductCard() {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItem));
   }, [cartItem]);
+
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-8 md:py-16 mx-auto">

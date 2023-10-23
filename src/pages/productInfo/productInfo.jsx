@@ -45,6 +45,9 @@ function ProductInfo() {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Layout>
       <section className="text-gray-600 body-font overflow-hidden">
