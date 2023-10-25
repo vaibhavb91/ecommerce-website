@@ -31,7 +31,6 @@ function ProductCard() {
     } else {
       toast.error("Please log or signup for add to cart");
       navigate("/login");
-      toast.error("login successfully");
     }
   };
 
@@ -66,12 +65,9 @@ function ProductCard() {
             .map((item, index) => {
               const { title, price, description, imageUrl } = item;
               return (
-                <div
-                  key={index}
-                  onClick={() => navigate(`/productinfo/${item?.id}`)}
-                  className="p-4 md:w-1/4  drop-shadow-lg "
-                >
+                <div key={index} className="p-4 md:w-1/4  drop-shadow-lg ">
                   <div
+                    // onClick={() => navigate(`/productinfo/${item?.id}`)}
                     className="h-full border-2 hover:shadow-gray-100 hover:shadow-2xl transition-shadow duration-300 ease-in-out    border-gray-200 border-opacity-60 rounded-2xl overflow-hidden"
                     style={{
                       backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
